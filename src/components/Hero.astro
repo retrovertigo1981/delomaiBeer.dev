@@ -1,0 +1,79 @@
+---
+// JS
+---
+
+<section class='hero'>
+  <picture>
+    <source media='(min-width: 1024px)' srcset='/imgs/Desktop-view.webp' />
+    <source media='(max-width: 835px)' srcset='/imgs/hero-mobile.webp' />
+    <img
+      src='/imgs/Desktop-view.webp'
+      alt='Delomai beer'
+      class='hero-img'
+      loading='lazy'
+    />
+  </picture>
+  <div class='big-logo'>
+    <img src='/logos/delomai.svg' alt='logo' />
+  </div>
+</section>
+
+<style>
+  .hero {
+    width: 100%;
+    position: relative;
+    aspect-ratio: 16 / 9;
+    background: #000000;
+  }
+
+  .hero img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .big-logo {
+    position: absolute;
+    width: 897px;
+    height: 354px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* media queries */
+
+  @media screen and (max-width: 760px) {
+    .big-logo {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 835px) {
+    .hero {
+      height: 100%;
+      aspect-ratio: 9 / 16;
+    }
+  }
+
+  @media screen and (max-width: 880px) {
+    .big-logo {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  @media screen and (min-width: 2560px) {
+    .big-logo {
+      top: 30%;
+    }
+  }
+</style>

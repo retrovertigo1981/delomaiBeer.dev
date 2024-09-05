@@ -1,14 +1,25 @@
 ---
 // JS
 
-// const mobileMenu = document.querySelector(".mobile-menu");
-// const menuHamIcon = document.querySelector(".menu");
-
-// menuHamIcon.addEventListener("click", toggleMobileMenu);
-
-// function toggleMobileMenu() {
-//   mobileMenu.classList.toggle("active");
-// }
+const { variedades } = Astro.props;
+const navItems = [
+  { label: "about", href: "about.html" },
+  {
+    label: "variedades",
+    href: "#",
+    subItems: variedades?.map((variedad) => ({
+      label: variedad?.data?.title,
+      href: `/variedades/${variedad.slug}`,
+    })),
+  },
+  { label: "Beerpacks", href: "beerpacks.html" },
+  {
+    label: "contacto",
+    href: "https://wa.me/56944058555",
+    isExternal: true,
+    icon: "/icons/whatsapp-vector.svg",
+  },
+];
 ---
 
 <nav>
@@ -19,47 +30,35 @@
       <img class='nav-logo' src='/logos/delomai.svg' alt='Logo Delomai' />
     </a>
   </div>
+
   <div class='navbar-right'>
     <ul>
-      <li>
-        <a href='/pages/about.html'>about</a>
-      </li>
-      <li>
-        <a href='#'>variedades</a>
-        <div class='beers-menu'>
-          <a href='#'>Golden Ale</a>
-          <a href='#'>IPA</a>
-          <a href='#'>Stout</a>
-          <a href='#'>Weizen</a>
-          <a href='#'>Amber Ale</a>
-          <a href='#'>Amber Calafate</a>
-        </div>
-      </li>
-
-      <li>
-        <a href='/pages/beerpacks.html'>Beerpacks</a>
-      </li>
-      <li>
-        <a
-          href='https://wa.me/56944058555'
-          target='_blank'
-          rel='noopener noreferrer'
-          >contacto
-          <span>
-            <svg
-              width='26'
-              height='25'
-              viewBox='0 0 26 25'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
+      {
+        navItems.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              {...(item.isExternal
+                ? { target: "_blank", rel: "noopener noreferrer" }
+                : {})}
             >
-              <path
-                d='M22.0837 3.63281C19.6545 1.28906 16.4193 0 12.9812 0C5.88474 0 0.110158 5.55804 0.110158 12.3884C0.110158 14.5703 0.701531 16.702 1.8263 18.5826L0 25L6.82398 23.2757C8.70246 24.2634 10.8186 24.7824 12.9754 24.7824H12.9812C20.0719 24.7824 25.974 19.2243 25.974 12.394C25.974 9.08482 24.513 5.97656 22.0837 3.63281ZM12.9812 22.6953C11.0564 22.6953 9.17208 22.1987 7.53131 21.2612L7.14286 21.0379L3.09601 22.0592L4.1744 18.2589L3.91929 17.8683C2.84671 16.2277 2.28432 14.3359 2.28432 12.3884C2.28432 6.71317 7.08488 2.09263 12.987 2.09263C15.8453 2.09263 18.5297 3.16406 20.5473 5.11161C22.5649 7.05915 23.8057 9.64286 23.7999 12.394C23.7999 18.0748 18.8776 22.6953 12.9812 22.6953ZM18.8486 14.9833C18.5297 14.827 16.9469 14.0792 16.6512 13.9788C16.3555 13.8728 16.141 13.8225 15.9265 14.135C15.712 14.4475 15.0974 15.1395 14.9061 15.3516C14.7205 15.558 14.5292 15.5859 14.2103 15.4297C12.3203 14.5201 11.0795 13.8058 9.83302 11.7467C9.50255 11.1998 10.1635 11.2388 10.7781 10.0558C10.8824 9.84933 10.8302 9.67076 10.7491 9.51451C10.6679 9.35826 10.0244 7.83482 9.75765 7.2154C9.49675 6.61272 9.23006 6.69643 9.03293 6.68527C8.8474 6.67411 8.63288 6.67411 8.41837 6.67411C8.20385 6.67411 7.85598 6.75223 7.5603 7.05915C7.26461 7.37165 6.43553 8.11942 6.43553 9.64286C6.43553 11.1663 7.58929 12.6395 7.74583 12.846C7.90816 13.0525 10.0128 16.1775 13.2421 17.5223C15.2829 18.3705 16.083 18.4431 17.1034 18.298C17.7238 18.2087 19.0051 17.5502 19.2718 16.8248C19.5385 16.0993 19.5385 15.4799 19.4573 15.3516C19.382 15.2121 19.1674 15.1339 18.8486 14.9833Z'
-                fill='white'></path></svg
-            ></span
-          ></a
-        >
-      </li>
+              {item.label}
+              {item.icon && (
+                <span>
+                  <img src={item.icon} alt={`${item.label} icon`} />
+                </span>
+              )}
+            </a>
+            {item.subItems && (
+              <div class='beers-menu'>
+                {item.subItems.map((subItem) => (
+                  <a href={subItem.href}>{subItem.label}</a>
+                ))}
+              </div>
+            )}
+          </li>
+        ))
+      }
     </ul>
   </div>
 
@@ -71,16 +70,21 @@
   >
     <img class='wsp' src='/icons/whatsapp-vector.svg' alt='Whatsapp Logo' />
   </a>
+
   <div class='mobile-menu' id='mobile-menu'>
     <ul>
-      <li><a href='#'>about</a></li>
-      <li><a href='#'>Golden Ale</a></li>
-      <li><a href='#'>IPA</a></li>
-      <li><a href='#'>Stout</a></li>
-      <li><a href='#'>Weizen</a></li>
-      <li><a href='#'>Amber Ale</a></li>
-      <li><a href='#'>Amber Calafate</a></li>
-      <li><a href='#'>Beerpacks</a></li>
+      {
+        navItems.flatMap((item) => [
+          <li>
+            <a href={item.href}>{item.label}</a>
+          </li>,
+          ...(item.subItems || []).map((subItem) => (
+            <li>
+              <a href={subItem.href}>{subItem.label}</a>
+            </li>
+          )),
+        ])
+      }
     </ul>
   </div>
 </nav>
@@ -150,10 +154,10 @@
     transition: 400ms;
   }
 
-  .navbar-right ul li:nth-child(4):hover a span svg path {
-    fill: #d0a35c;
+  /* .navbar-right ul li:nth-child(4):hover a span .wsp {
+    color: #d0a35c;
     transition: 400ms;
-  }
+  } */
 
   .navbar-right ul li a:hover {
     color: #d0a35c;
@@ -189,7 +193,7 @@
     justify-content: center;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 90vh;
     background-color: #000000;
     z-index: 1;
 
@@ -207,6 +211,7 @@
   }
   .mobile-menu ul li {
     margin-bottom: 20px;
+    list-style: none;
   }
 
   .mobile-menu ul li ul {
@@ -225,8 +230,9 @@
     display: grid;
     grid-template-rows: repeat(5, max-content);
     background-color: #000000;
-    gap: 10px;
-    padding: 20px;
+    gap: 5px;
+    padding: 20px 20px;
+    border-radius: 5px;
     opacity: 0;
     transition: opacity 400ms;
     transition-delay: 400ms;
@@ -267,3 +273,14 @@
     }
   }
 </style>
+
+<script>
+  const mobileMenu = document.querySelector(".mobile-menu");
+  const menuHamIcon = document.querySelector(".menu");
+
+  menuHamIcon.addEventListener("click", toggleMobileMenu);
+
+  function toggleMobileMenu() {
+    mobileMenu.classList.toggle("active");
+  }
+</script>

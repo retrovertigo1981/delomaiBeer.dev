@@ -1,0 +1,100 @@
+---
+const {
+  content: { title, image },
+} = Astro.props;
+---
+
+<section class='amber-ale'>
+  <div class='texts'>
+    <div class='content'>
+      <h1>{title}</h1>
+      <slot />
+    </div>
+  </div>
+  <div class='pics'>
+    <div>
+      {image.map((imagen) => <img src={imagen} alt={title} />)}
+    </div>
+  </div>
+</section>
+
+<style>
+  .amber-ale {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-auto-flow: column;
+    background-color: #000000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pics {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    gap: 30px;
+  }
+
+  .pics div {
+    width: 100%;
+    height: auto;
+  }
+
+  .pics div img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  .amber-ale .texts {
+    padding: 20px 40px;
+    align-self: flex-start;
+  }
+
+  .amber-ale .texts .content h1 {
+    font-family: RootBeer;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 55px;
+    color: #d0a35c;
+    margin: 0.67em 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 45px;
+    text-align: left;
+    color: #eae9e9;
+    margin-bottom: 10px;
+    gap: 20px;
+  }
+
+  #custom-list {
+    padding-left: 20px;
+    padding-top: 40px;
+  }
+
+  /* -------------------------- media queries ----------------------- */
+
+  @media screen and (max-width: 835px) {
+    .amber-ale {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+</style>
+
+<script>
+  const customList = document.getElementById("custom-list");
+  customList.style.paddingLeft = "20px";
+</script>

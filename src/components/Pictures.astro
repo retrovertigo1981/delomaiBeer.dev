@@ -1,0 +1,78 @@
+---
+// JS
+---
+
+<section class='pics'>
+  <img class='img1' src='/imgs/img1.webp' alt='lupulo' />
+  <img class='img2' src='/imgs/img2.webp' alt='cerveza' />
+  <img class='img3' src='/imgs/img3.webp' alt='delomai bajo' />
+  <img class='img4' src='/imgs/img4.webp' alt='asado delomai' />
+  <img class='img5' src='/imgs/img5.webp' alt='delomai' />
+  <img class='img6' src='/imgs/familia delomai 3.webp' alt='familia delomai' />
+</section>
+
+<style>
+  /* Media Queries */
+  @media screen and (min-width: 761px) {
+    .pics {
+      display: grid;
+      width: 100%;
+      height: auto;
+      padding: 10px 0;
+      border-radius: 5px;
+      gap: 10px;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      z-index: 3;
+    }
+
+    .img1 {
+      grid-area: 1 / 1 / 3 / 2;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 0.5;
+    }
+
+    .img2,
+    .img3,
+    .img4,
+    .img5 {
+      aspect-ratio: 1 / 1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .img6 {
+      grid-area: 4 / 1 / 6 / 3;
+      aspect-ratio: 16 / 9;
+      object-fit: fill;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  @media screen and (max-width: 760px) {
+    .pics {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 10px 0;
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 1280px) {
+    .pics {
+      grid-template-columns: repeat(4, auto);
+      grid-template-rows: repeat(2, auto);
+    }
+
+    .img6 {
+      grid-area: 2 / 3 / 3 / 5;
+      aspect-ratio: 16 / 9;
+      width: 100%;
+      height: 100%;
+    }
+  }
+</style>
