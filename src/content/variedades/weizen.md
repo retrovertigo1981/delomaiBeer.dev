@@ -15,3 +15,4 @@ La carbonatación es alta, tiene un final levemente dulce y una inconfundible es
     <li>Nivel de Amargo: 17 Ibus</li>
     <li>Nivel de color: 4 SRM aprox.</li>
 </ul>
+

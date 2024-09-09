@@ -11,15 +11,13 @@ import { getCollection } from "astro:content";
 const variedades = await getCollection("variedades");
 ---
 
-<Layout title='Délomai - Cerveza Artesanal'>
-  <main>
-    <NavBar variedades={variedades} />
-    <Hero />
-    <Description />
-    <Callout />
-    <Pictures />
-    <Footer />
-  </main>
+<Layout title='Delomai - Cerveza Artesanal'>
+  <NavBar variedades={variedades} />
+  <Hero />
+  <Description />
+  <Callout />
+  <Pictures />
+  <Footer />
 </Layout>
 
 <style>

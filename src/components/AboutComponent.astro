@@ -1,0 +1,125 @@
+---
+//JS
+---
+
+<section class='about'>
+  <div class='texts'>
+    <h1>nuestra historia</h1>
+    <p>
+      Cervecería Délomai, es una microcerveceria artesanal que nació en el año
+      2019 con el propósito de obtener y transmitir, experiencias únicas
+      mediante la combinación de cuatro ingredientes naturales, el agua, la
+      malta, el lúpulo y la levadura, cada uno de ellos manifestando sus sabores
+      y propiedades que dan origen a una cerveza natural, organica y libre de
+      aditivos.
+    </p>
+    <p>
+      Nuestra planta de elaboración se encuentra ubicada en Rancagua, Sexta
+      región. En ella se elaboran los procesos de maceración, cocción,
+      maduración y embasado que dan origen a una cerveza completamente artesanal
+      y sustentable, trabajamos con agua purificada que le da un sabor
+      característico a nuestra cerveza.
+    </p>
+    <p>
+      Actualmente estamos orientados a satisfacer a todos aquellos que buscan
+      cervezas artesanales de origen sustentable que aportan sabores, aromas,
+      colores naturales y con procesos amigables con nuestro medioambiente.
+    </p>
+  </div>
+  <div class='pics'>
+    <div>
+      <img src='/imgs/familia delomai 3.webp' alt='Familia delomai' />
+    </div>
+    <div>
+      <img src='/imgs/beer-about (1).webp' alt='beer about' />
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-auto-flow: column;
+    background-color: #000000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pics {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 30px;
+    gap: 30px;
+  }
+  .pics div {
+    width: 100%;
+    height: auto;
+  }
+
+  .pics div img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+    margin: 0 auto;
+  }
+
+  .about .texts {
+    padding: 20px 40px;
+    align-self: flex-start;
+  }
+
+  .about .texts h1 {
+    font-family: RootBeer;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 55px;
+    color: #d0a35c;
+  }
+
+  .about .texts p {
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 40px;
+    text-align: justify;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+
+  /* media queries */
+
+  @media screen and (max-width: 835px) {
+    .about {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  @media screen and (min-width: 1920px) {
+    .about .texts {
+      padding: 20px 200px;
+    }
+
+    .about .texts h1 {
+      font-size: 5.2rem;
+      line-height: 55px;
+    }
+
+    .about .texts p {
+      font-family: "Roboto", sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 2.2rem;
+      line-height: 40px;
+      text-align: justify;
+      color: #000000;
+      margin-bottom: 60px;
+    }
+  }
+</style>

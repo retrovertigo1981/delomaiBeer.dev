@@ -14,11 +14,11 @@ export async function getStaticPaths() {
 
 const variedad = Astro.props;
 const { Content } = await variedad.render();
-const variedades = await getCollection("variedades");
+// const variedades = await getCollection("variedades");
 ---
 
 <Layout title={variedad?.data.title}>
-  <NavBar variedades={variedades} />
+  <NavBar />
   <Content />
   <Footer />
 </Layout>
